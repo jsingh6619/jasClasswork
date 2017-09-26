@@ -1,7 +1,8 @@
 package attendance;
 
 public class Student implements Attendee {
-	private String first = 
+	private String first;
+	private String last;
 			
 	public boolean isPresent() {
 		
