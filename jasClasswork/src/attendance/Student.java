@@ -5,6 +5,10 @@ public class Student implements Attendee {
 	private String first;
 	private String last;
 	
+	public Student(String first, String last){
+		this.first = first;
+		this.last = last;
+	}
 	public boolean isPresent() {
 		if (isPresent = true) {
 			return true;
@@ -36,7 +40,12 @@ public class Student implements Attendee {
 	}
 	
 	public boolean matches(String last) {
-		
+		if(this.last == last) {
+			return true;
+		}
+		else {
+			return false;
+		}
 	}
 	
 	public String getReportString() {
