@@ -65,10 +65,10 @@ public class Student implements Attendee {
 			report += " ";
 		}
 		if(isPresent) {
-			report+="PRESENT/n";
+			report+="PRESENT";
 		}
 		else {
-			report+="ABSENT/n";
+			report+="ABSENT";
 		}
 		return report;
 		/*String end = this.lastName;
