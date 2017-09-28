@@ -4,8 +4,6 @@ public class Student implements Attendee {
 	private boolean isPresent = false;
 	private String first;
 	private String last;
-	private String lChallenge;
-	private String fChallenge;
 	
 	public Student(String first, String last){
 		this.first = first;
@@ -58,14 +56,23 @@ public class Student implements Attendee {
 	}
 	
 	public String getReportString() {
-		changeName(lChallenge);
-		String report = lChallenge;
-		while (report.length()<20) {
-			report += " ";
+		String report = last;
+		if (report.length() < 20) {
+			while (report.length() < 20) {
+				report += " ";
+			}
 		}
-		report += fChallenge;
-		while (report.length()<40) {
-			report += " ";
+		else{
+			report = changeName(report, 20);
+		}
+		report += first;
+		if (report.length() < 40) {
+			while (report.length() < 40) {
+				report += " ";
+			}
+		}
+		else{
+			report = changeName(report, 40);
 		}
 		if(isPresent) {
 			report+="PRESENT";
@@ -82,8 +89,14 @@ public class Student implements Attendee {
 		return end;
 		*/
 	}
-	public String changeName(String name) {
-		// TODO Auto-generated method stub
-		
+	public String changeName(String name ,int ind) {
+		String nme = "";
+		if(name.length() > ind) {
+			nme = name.substring(0, ind - 3);
+		}
+		while (nme.length() < ind) {
+			nme += ".";
+		}
+		return nme;
 	}
 }
