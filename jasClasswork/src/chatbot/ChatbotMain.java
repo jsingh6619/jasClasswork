@@ -12,7 +12,6 @@ public class ChatbotMain {
 	}
 	
 	//Copied from class notes Utility class
-	//Need to update with the string methods created in class
 
 	/**
 	 * return the index of the keyword after startPsn that is isolated and has no negotiations or -1 otherwise
