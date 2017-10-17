@@ -8,6 +8,90 @@ public class ArraysMain {
 	private String[] values;
 
 	public ArraysMain() {
+		tuesdayMethods();
+	}
+	
+	private void tuesdayMethods() {
+		int[] orderTest = {1,2,3,4,5,1,6,7,8,9,10,11};
+		System.out.println(Arrays.toString(orderTest));
+		System.out.println(longestConsecutiveSequence(orderTest));
+	}
+
+	/**
+	 * return the length of the longest cons. sequence in the array
+	 * for example:
+	 * 	lCS({1,2,3,2,3,4,5,2,3,4}) -> 4
+	 * 	lCS({16,17,18,19,2,5,6,7,8,9,10}) -> 6
+	 * @param arr
+	 * @return
+	 */
+	private int longestConsecutiveSequence(int[] arr) {
+		int maxLength = 1;
+		int counter = 0;
+		for(int i = 0; i < arr.length - 1; i++) {
+			while(i + counter < arr.length && isConsecutive(arr, i, i + counter)) {
+				counter++;
+			}
+			if(counter > maxLength) {
+				maxLength = counter;
+			}
+			i = i + counter - 1;
+			counter = 1;
+		}
+		return maxLength;
+	}
+	
+	/**
+	 * returns true if all of the elements from start to end are increasing by 1
+	 * example:
+	 * iC({1,7,3,6,7,8,12},3,5 -> true
+	 * @param arr
+	 * @param start
+	 * @param end
+	 * @return
+	 */
+	public boolean isConsecutive(int[] arr, int start, int end) {
+		for(int i = start; i < end; i++) {
+			if(arr[i] + 1 != arr[i + 1]) {
+				return false;
+			}
+		}
+		return true;
+	}
+	
+	/**
+	 * The element at index 0 moves to the last position in the array as all other elements move forward. This must happen exactly n times.
+	 * @param arr
+	 */
+	private void cycleThrough(int[] arr, int n) {
+		for(int i = 0; i < n; i++) {
+			frontToBack(arr);
+		}
+	}
+
+	/**
+	 * removes the element at index 0, pushes all other elements forward
+	 * 1 goes to 0, 2 goes to 1, ...
+	 * puts the element that was at index 0 at the end
+	 * @param arr
+	 * @return
+	 */
+	private void frontToBack(int[] arr) {
+		int placeholder = arr[0];
+		for(int i = 0; i < arr.length-1; i++) {
+			arr[i] = arr[i+1];
+		}
+		arr[arr.length-1] = placeholder;
+	}
+
+	private void warmUpMethods() {
+		int[] orderTest = {1,2,3,4,5,6,7,8,9,10};
+		reverseArray(orderTest);
+		System.out.println(Arrays.toString(orderTest));
+		System.out.println(Arrays.toString(subArray(orderTest,3,4)));
+	}
+
+	public void cardMethods() {
 		suits = new String[4];
 		suits[0] = "Clubs";
 		suits[1] = "Hearts";
@@ -22,8 +106,6 @@ public class ArraysMain {
 		values[11] = "Queen";
 		values[10] = "Jack";
 		printDeck();
-		
-//		System.out.println(Arrays.toString(testArray));
 	}
 	
 	private String[] printDeck() {
@@ -37,12 +119,27 @@ public class ArraysMain {
 		}
 		return deck;
 	}
-
+	
+	private void reverseArray(int[] arr) {
+		for(int i = 0; i < (arr.length/2); i++) {
+			swap(arr,i,(arr.length-1-i));
+		}
+	}
+	
+	private int[] subArray(int[] arr, int start, int length) {
+		int[] sub = new int[length];
+		for(int i = 0; i < length; i++) {
+			sub[i] = arr[i+start];
+		}
+		return sub;
+	}
+	
 	private void shuffle(int[] arr) {
 		for(int i = 0; i < arr.length; i++){
 			swap(arr, i, (int)(Math.random() * arr.length));
 		}
 	}
+	
 
 	/**
 	 * Swaps element at i and j
