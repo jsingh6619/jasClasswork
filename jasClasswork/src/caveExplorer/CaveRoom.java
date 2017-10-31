@@ -63,7 +63,7 @@ public class CaveRoom {
 		//NOTE: when I say "no long if-else statements", this is how you should be thinking
 		return directions[dir];
 	}
-
+	
 	public void enter() {
 		contents = "X";
 	}
@@ -85,20 +85,48 @@ public class CaveRoom {
 	
 	public void interpretInput(String input) {
 		while(!isValid(input)) {
-			System.out.println("You can only enter 'w', 'a', 's', 'd'.");
+			printValidMoves();
 			input = CaveExplorer.in.nextLine();
 		}
-		int direction = "wdsa".indexOf(input);
-		goToRoom(direction);
+		int direction = validMoves().indexOf(input);
+		if(direction < 4) {
+			goToRoom(direction);
+		}
+		else {
+			performAction(direction);
+		}
 	}
 	
+	/**
+	 * override to create response to keys other than wdsa
+	 * @param direction
+	 */
+	public void performAction(int direction) {
+		CaveExplorer.print("That key does nothing.");
+	}
+
+	/**
+	 * Override to change description of possible moves
+	 */
+	public void printValidMoves() {
+		System.out.println("You can only enter 'w', 'a', 's', 'd'.");
+	}
+	
+	/**
+	 * override to add more moves
+	 * @return
+	 */
+	public String validMoves() {
+		return "wdsa";
+	}
+
 	/**
 	 * returns true is w,a,s, or d is the input (NO IF STATEMENT)
 	 * @param input
 	 * @return
 	 */
 	private boolean isValid(String input) {
-		return "wdsa".indexOf(input) != -1 && input.length() == 1;
+		return validMoves().indexOf(input) != -1 && input.length() == 1;
 	}
 	
 	/**
