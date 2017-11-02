@@ -28,6 +28,12 @@ public class CaveExplorer {
 			print(inventory.getDescription());
 			print(currentRoom.getDescription());
 			print(currentRoom.getDirections());
+
+//changes this not sure for princess file
+			if(Math.random() > .5) {
+				Princess.act();
+			}
+			
 			print("What would you like to do?");
 			currentRoom.interpretInput(in.nextLine());
 		}
