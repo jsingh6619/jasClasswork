@@ -5,7 +5,7 @@ public class Environment {
 	private int plants;
 	private int growthRate;
 	
-	public static final void main(String[] args) {
+	public static void main(String[] args) {
 		Environment farm = new Environment(10);
 		System.out.println(farm);
 		farm.growPlants();
