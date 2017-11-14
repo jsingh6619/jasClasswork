@@ -25,7 +25,7 @@ public class Habitat extends Environment {
 	}
 	
 	public String animalReport() {
-		String s  = " ";
+		String s  = "";
 		for(Animal a: animals) {
 			s += a + "\n";
 		}
@@ -40,7 +40,7 @@ public class Habitat extends Environment {
 		int i = 0;
 		while(i < animals.length) {
 			if(animals[i] == null) {
-				animals[1] = animal;
+				animals[i] = animal;
 				break;
 			}
 			i++;
