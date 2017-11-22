@@ -17,6 +17,7 @@ public class Predator extends ReproductionAnimal {
 	public String getName() {
 		return PREDATORS[(int)(Math.random() * PREDATORS.length)];
 	}
+	
 	public static void main(String[] args) {
 		Wilderness wilderness = new Wilderness("A Wooded Area", 10);
 		Predator p = new Predator(wilderness);
