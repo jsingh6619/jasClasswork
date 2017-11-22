@@ -24,8 +24,8 @@ public class Prey extends ReproductionAnimal {
 		setMaxLitter(6);
 	}
 	
-	public Prey(Habitat matingArea, String description, Trait trait1, Trait trait2) {
-		super(matingArea, description, trait1, trait2);
+	public Prey(Habitat habitat, String description, Trait trait1, Trait trait2) {
+		super(habitat, description, trait1, trait2);
 		setMaxLitter(6);
 	}
 	
