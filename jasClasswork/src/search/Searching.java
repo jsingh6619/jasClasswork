@@ -55,18 +55,19 @@ public class Searching {
 
 
 	private int binarySearch(int[] numArr, int min, int max, int target) {
-		int index = -1;
 		int half = (int)((min + max)/2);
-		if(numArr[half] > target) {
-			binarySearch(numArr, min, half, target);
+		if(numArr[half] == target) {
+			return half;
+		}
+		else if(max - min == 0) {
+			return -1;
 		}
 		else if(numArr[half] < target) {
-			binarySearch(numArr, half, max, target);
+			return binarySearch(numArr, half, max, target);
 		}
-		else if(numArr[half] == target) {
-			index = half;
+		else {
+			return binarySearch(numArr, min, half, target);
 		}
-		return index;
 	}
 
 	private int search(int[] searchThis, int target) {
