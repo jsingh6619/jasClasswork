@@ -20,5 +20,6 @@ public class LionsPuzzle {
 			return !willEat(numberOfLions - 1);
 		}
 	}
-
+//odd always eat sheep
+//even dont eat sheep
 }
